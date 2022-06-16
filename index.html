@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-Br">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta name="description" content="Frontend Mentor challange for building a tic tac toe game using HTML, CSS and Vanilla Javascript"/>
+		<meta name="keywords"content="frontend mentor, tic tac toe challenge, frontend mentor tic tac toe solution"/>
+		<meta name="author" content="Mostafa Sayed" />
+		<link rel="shortcut icon" href="./assets/images/favicon-32x32.png" type="image/x-icon"/>
+		<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;700&display=swap" rel="stylesheet"/>
+		<link rel="stylesheet" href="./assets/styles/style.css" />
+		<script src="./assets/scripts/app.js" defer></script>
+		<title>Tic Tac Toe por I__Rizzo</title>
+	</head>
+	<body>
+		<div id="backdrop" class="backdrop d-none">&nbsp;</div>
+		<section id="modal" class="modal d-none"></section>
+
+		<!-- INÍCIO DO JOGO -->
+		<section id="game-start" class="game-start container d-block">
+			<div class="logo">
+				<a class="logo__link" href="index.html" aria-label="logo">
+					<svg class="logo__icon">
+						<use xlink:href="./assets/images/SVG/logo.svg#logo"></use>
+					</svg>
+				</a>
+			</div>
+
+			<div class="game-start__choices">
+				<header class="game-start__header">
+					<h4 class="heading-xs">Escolha 1 jogador</h4>
+				</header>
+				<div id="game-start-marks" class="game-start__marks">
+					<div id="x" class="game-start__x-mark">
+						<svg class="game-start__x-icon">
+							<use
+								xlink:href="./assets/images/SVG/icon-x-default.svg#icon-x-default"
+							></use>
+						</svg>
+					</div>
+					<div id="o" class="game-start__o-mark selected">
+						<svg class="game-start__o-icon">
+							<use
+								xlink:href="./assets/images/SVG/icon-o-default.svg#icon-o-default"
+							></use>
+						</svg>
+					</div>
+				</div>
+				<footer class="game-start__footer">Lembre-se: que X é o primeiro</footer>
+			</div>
+
+			<div class="game-start__buttons">
+				<button id="vs-cpu" class="btn btn--yellow">Novo jogo (vs computador)</button>
+				<button id="vs-player" class="btn btn--blue">
+					Novo jogo (vs outro jogador)
+				</button>
+			</div>
+		</section>
+
+	</body>
+</html>
