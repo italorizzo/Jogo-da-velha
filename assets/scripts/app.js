@@ -26,6 +26,7 @@ let currentClass;
 const vsCpuBtn = document.getElementById('vs-cpu');
 const vsPlayerBtn = document.getElementById('vs-player');
 const restartBtn = document.getElementById('restart-btn');
+const gameplay__initial_frame = document.getElementById('gameplay__initial-frame')
 
 const gameStartEl = document.getElementById('game-start');
 const gamePlayEl = document.getElementById('gameplay');
@@ -81,35 +82,29 @@ function setScoreBoard() {
 		isVsPlayer
 			? 'X (P1)'
 			: currentPlayerMark === O_CLASS
-			? 'X (CPU)'
-			: 'X (You)'
+			? 'X (COMP)'
+			: 'X (Você)'
 	} <span id="x-win-inner" class="gameplay__highlight">${xWin}</span>`;
-	tieEl.innerHTML = `Ties <span id="tie-inner" class="gameplay__highlight">${tie}</span>`;
+	tieEl.innerHTML = `Empate <span id="tie-inner" class="gameplay__highlight">${tie}</span>`;
 	oWinEl.innerHTML = `${
 		isVsPlayer
 			? 'O (P2)'
 			: currentPlayerMark === O_CLASS
-			? 'O (You)'
-			: 'O (CPU)'
+			? 'O (Você)'
+			: 'O (COMP)'
 	} <span id="o-win-inner" class="gameplay__highlight">${oWin}</span>`;
 }
 
 function setTurn() {
 	const turnEl = document.getElementById('gameplay-turn');
-
 	turnEl.innerHTML = `<svg class="gameplay__turn-icon">
-											<use xlink:href="./assets/images/SVG/icon-${
-												oTurn ? O_CLASS : X_CLASS
-											}-default.svg#icon-${
-		oTurn ? O_CLASS : X_CLASS
-	}-default"></use>
-											</svg> &nbsp; Turn`;
+	<use xlink:href="./assets/images/SVG/icon-${oTurn ? O_CLASS : X_CLASS}-default.svg#icon-${oTurn ? O_CLASS : X_CLASS}-default"></use></svg> &nbsp; Vez`;
 }
 
 function playVsCpu() {
 	if (currentPlayerMark === O_CLASS) getCpuChoice();
-	// CPU starts first
-	else getPlayerChoice(); // Player starts first
+	// CPU joga primeiro
+	else getPlayerChoice(); // Jogador joga primeiro
 }
 
 function playVsPlayer() {
@@ -224,8 +219,8 @@ function endGame(draw) {
 		<h4 class="heading-lg">Round Tied</h4>
 
 		<div class="modal__buttons">
-			<button id="quit" class="btn btn--silver-small btn--small">Quit</button>
-			<button id="next-round" class="btn btn--yellow-small btn--small">Next Round</button>
+			<button id="quit" class="btn btn--silver-small btn--small">Sair</button>
+			<button id="next-round" class="btn btn--yellow-small btn--small">Próxima rodada</button>
 		</div>
 		`;
 	} else {
@@ -262,13 +257,13 @@ function setWinner() {
 	modalEl.innerHTML = `<h4 class="heading-xs">${
 		isVsPlayer
 			? oTurn
-				? 'Player 2 Win'
-				: 'Player 1 win'
+				? 'Player 2 Venceu'
+				: 'Player 1 Venceu'
 			: oTurn && currentPlayerMark === 'o'
-			? 'You won'
+			? 'Você venceu'
 			: !oTurn && currentPlayerMark === 'x'
-			? 'You won'
-			: 'oh No, you lost...'
+			? 'Você venceu'
+			: 'Se perdeu, se é ruim em fi...'
 	}</h4>
 	<div class="modal__result">
 		<svg class="modal__icon">
@@ -278,12 +273,12 @@ function setWinner() {
 		</svg>
 		<h1 class="heading-lg heading-lg--${
 			oTurn ? 'yellow' : 'blue'
-		}">takes the round</h1>
+		}">Lidera a rodada</h1>
 	</div>
 
 	<div class="modal__buttons">
-		<button id="quit" class="btn btn--silver-small btn--small">Quit</button>
-		<button id="next-round" class="btn btn--yellow-small btn--small">Next Round</button>
+		<button id="quit" class="btn btn--silver-small btn--small">Sair</button>
+		<button id="next-round" class="btn btn--yellow-small btn--small">Próxima Rodada</button>
 	</div>`;
 }
 
@@ -303,15 +298,39 @@ function setNextRound() {
 	startGame();
 }
 
-function restartHandler() {
-	modalEl.innerHTML = `<h1 class="heading-lg">Restart Game</h1>
+function goInicialPage() {
+	modalEl.innerHTML = `<h1 class="heading-lg">Voltar a tela inicial</h1>
 
 	<div class="modal__buttons">
 		<button id="btn-cancel" class="btn btn--silver-small btn--small">
-			No, Cancel
+			Não, Cancelar
+		</button>
+		<button id="quit" class="btn btn--yellow-small btn--small">Sim, Sair</button>
+	</div>`;
+	
+	
+	const cancelBtn = document.getElementById('btn-cancel');
+	const quitBtn = document.getElementById('quit')
+
+	changeDomLayout(modalEl, 'd-none', 'd-block');
+
+	cancelBtn.addEventListener('click', () => {
+		changeDomLayout(modalEl, 'd-block', 'd-none');
+	});
+	quitBtn.addEventListener('click', () => {
+		location.reload();
+	});
+}
+
+function restartHandler() {
+	modalEl.innerHTML = `<h1 class="heading-lg">Reiniciar jogo</h1>
+
+	<div class="modal__buttons">
+		<button id="btn-cancel" class="btn btn--silver-small btn--small">
+			Não, Cancelar
 		</button>
 		<button id="btn-restart" class="btn btn--yellow-small btn--small">
-			Yes, Restart
+			Sim, Reiniciar
 		</button>
 	</div>`;
 
@@ -340,6 +359,7 @@ gameMarksEl.forEach(mark => {
 	mark.addEventListener('click', getUserChoiceHandler);
 });
 
+gameplay__initial_frame.addEventListener('click', goInicialPage)
 restartBtn.addEventListener('click', restartHandler);
 vsCpuBtn.addEventListener('click', setGameModeHandler);
 vsPlayerBtn.addEventListener('click', setGameModeHandler);

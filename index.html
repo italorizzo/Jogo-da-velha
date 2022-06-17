@@ -7,8 +7,9 @@
 		<meta name="author" content="I__Rizzo" />
 		<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;700&display=swap" rel="stylesheet"/>
 		<link rel="stylesheet" href="./assets/styles/style.css" />
+		<link rel="shortcut icon" href="assets/images/faviconico.png" type="image/x-icon">
 		<script src="./assets/scripts/app.js" defer></script>
-		<title>Jogo da Veia I__Rizzo</title>
+		<title>Jogo da Veia de I__Rizzo</title>
 	</head>
 	<body>
 		<div id="backdrop" class="backdrop d-none">&nbsp;</div>
@@ -54,6 +55,44 @@
 				</button>
 			</div>
 		</section>
-
+		
+		<!-- GAMEPLAY -->
+		<section id="gameplay" class="gameplay container d-none">
+			<div class="gameplay__xo">
+				<div class="logo">
+					<button id="gameplay__initial-frame">
+						<svg class="logo__icon">
+							<use xlink:href="./assets/images/SVG/logo.svg#logo"></use>
+						</svg>
+					</button>
+				</div>
+			</div>
+			<div id="gameplay-turn" class="gameplay__turn heading-xs"></div>
+			<div id="restart-btn" class="gameplay__restart">
+				<svg class="gameplay__restart-icon">
+					<use
+						xlink:href="./assets/images/SVG/icon-restart.svg#icon-restart"
+					></use>
+				</svg>
+			</div>
+			<div id="gameplay-board" class="gameplay__board">
+				<div class="gameplay__card"></div>
+				<div class="gameplay__card"></div>
+				<div class="gameplay__card"></div>
+				<div class="gameplay__card"></div>
+				<div class="gameplay__card"></div>
+				<div class="gameplay__card"></div>
+				<div class="gameplay__card"></div>
+				<div class="gameplay__card"></div>
+				<div class="gameplay__card"></div>
+			</div>
+			<div id="x-win" class="gameplay__win"></div>
+			<div id="tie" class="gameplay__tie"></div>
+			<div id="o-win" class="gameplay__loss"></div>
+			<div id="opponent-message" class="gameplay__opponent-message d-none">
+				<p>Seu oponente está pensando</p>
+				<img src="./assets/images/loading.gif" alt="Mensagem do seu oponente" />
+			</div>
+		</section>
 	</body>
 </html>
