@@ -25,6 +25,12 @@
 				box-shadow: inset 0 -0.8rem 0 #0f191e;
 				border-radius: 1.5rem; 
 			}
+			@media only screen and (max-width: 37.5em) {
+				.gameplay__board {
+					grid-template-columns: repeat(3, minmax(9.6rem, 1fr));
+					grid-template-rows: repeat(3, minmax(9.6rem, 1fr)); 
+				} 
+			}
 		</style>
 	</head>
 	<body>

@@ -296,12 +296,7 @@ body {
   height: 2rem; 
 }
 
-@media only screen and (max-width: 37.5em) {
-  .gameplay__board {
-    grid-template-columns: repeat(3, minmax(9.6rem, 1fr));
-    grid-template-rows: repeat(3, minmax(9.6rem, 1fr)); 
-  } 
-}
+
 
 @media only screen and (max-width: 37.5em) {
   .gameplay__card {
