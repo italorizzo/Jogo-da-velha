@@ -1,15 +1,20 @@
 const X_CLASS = 'x';
 const O_CLASS = 'o';
 const WINNING_COMBINATIONS = [
-	[0, 1, 2],
-	[3, 4, 5],
-	[6, 7, 8],
-	[0, 3, 6],
-	[1, 4, 7],
-	[2, 5, 8],
-	[0, 4, 8],
-	[2, 4, 6],
-];
+	//HORIZONTAL
+	[0, 1, 2, 3],
+    [4, 5, 6, 7],
+    [8, 9, 10, 11],
+    [12, 13, 14, 15],
+	//VERTICAL
+    [0, 4, 8, 12],
+    [1, 5, 9, 13],
+    [2, 6, 10, 14],
+    [3, 7, 11, 15],
+	//DIAGONAL
+    [0, 5, 10, 15],
+    [3, 6, 9, 12]
+]
 
 let currentPlayerMark = O_CLASS;
 let isVsPlayer = false;
@@ -22,10 +27,12 @@ let tie = 0;
 let winningArry;
 let currentClass;
 
+
 // CASHING DOM ELEMENTS
 const vsCpuBtn = document.getElementById('vs-cpu');
 const vsPlayerBtn = document.getElementById('vs-player');
 const restartBtn = document.getElementById('restart-btn');
+const body = document.querySelector('body')
 const gameplay__initial_frame = document.getElementById('gameplay__initial-frame')
 
 const gameStartEl = document.getElementById('game-start');
@@ -216,7 +223,7 @@ function endGame(draw) {
 		changeDomLayout(modalEl, 'd-none', 'd-block');
 
 		modalEl.innerHTML = `
-		<h4 class="heading-lg">Round Tied</h4>
+		<h4 class="heading-lg">Empate</h4>
 
 		<div class="modal__buttons">
 			<button id="quit" class="btn btn--silver-small btn--small">Sair</button>
